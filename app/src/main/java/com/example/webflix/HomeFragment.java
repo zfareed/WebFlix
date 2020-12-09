@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import java.util.ArrayList;
+
 
 public class HomeFragment extends Fragment {
 
     View view;
     ViewFlipper flipper;
+    ArrayList<VideoData> videoData;
 
 
     @Override
@@ -26,10 +31,18 @@ public class HomeFragment extends Fragment {
 
         flipper = view.findViewById(R.id.flipper);
 
-        int slideshowArray[] = {R.drawable.slider, R.drawable.webflix_logo, R.drawable.slider};
+        int slideshowArray[] = {R.drawable.slider, R.drawable.slider, R.drawable.slider};
 
         for (int i = 0; i < slideshowArray.length; i++)
             slideShow(slideshowArray[i]);
+
+        VideoData();
+
+        RecyclerView recyclerView = view.findViewById(R.id.rclrview);
+        HomeAdapter homeAdapter = new HomeAdapter(getContext(),videoData);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(homeAdapter);
 
 
         return view;
@@ -48,4 +61,20 @@ public class HomeFragment extends Fragment {
 
 
     }
+
+    public void VideoData(){
+        videoData = new ArrayList<VideoData>();
+        videoData.add(new VideoData("Title 1",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 2",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 3",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 4",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 5",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 6",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 7",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 8",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 9",R.drawable.web_series_image));
+        videoData.add(new VideoData("Title 10",R.drawable.web_series_image));
+
+    }
+
 }

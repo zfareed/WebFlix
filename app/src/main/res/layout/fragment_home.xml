@@ -9,6 +9,14 @@
    <ViewFlipper
        android:id="@+id/flipper"
        android:layout_width="match_parent"
-       android:background="@color/yello"
+       android:background="@color/light_gray"
        android:layout_height="220dp"/>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rclrview"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_weight="1"/>
+
+
 </LinearLayout>
