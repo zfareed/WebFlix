@@ -1,6 +1,7 @@
 package com.example.webflix;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         VideoData videodata = data.get(position);
         holder.Title.setText(videodata.Video_title);
         holder.VideoImage.setBackgroundResource(videodata.Video_image);
-        /*holder.Title.setText("Title");*/
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,VideoDetails.class);
+                intent.putExtra("count",position);
+                context.startActivity(intent);
+
+            }
+        });
 
 
     }
@@ -47,6 +57,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         return data.size();
     }
 
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView VideoImage;
         TextView Title;
@@ -56,6 +68,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             VideoImage = itemView.findViewById(R.id.cardImage);
             Title = itemView.findViewById(R.id.video_title_text);
+            int pos = getAdapterPosition();
 
         }
     }
