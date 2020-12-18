@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "226793040808",
+    "project_id": "webflix-298110",
+    "storage_bucket": "webflix-298110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226793040808:android:18e49314e4a39754cb8b9d",
+        "android_client_info": {
+          "package_name": "com.example.webflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226793040808-foieogulid2lugehq7c99re7fgooti4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ZKKKc-bZCb1vdyw81_6kCt4pXWEQAJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226793040808-foieogulid2lugehq7c99re7fgooti4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

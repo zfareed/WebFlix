@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
@@ -25,7 +27,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.single_data_layout,parent,false);
         ViewHolder holder = new ViewHolder(view);
 
@@ -36,19 +38,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         VideoData videodata = data.get(position);
         holder.Title.setText(videodata.Video_title);
-        holder.VideoImage.setBackgroundResource(videodata.Video_image);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context,VideoDetails.class);
-                intent.putExtra("count",position);
-                context.startActivity(intent);
-
-            }
-        });
-
-
+        Picasso.get().load(videodata.Video_image).fit().into(holder.VideoImage);
     }
 
     @Override

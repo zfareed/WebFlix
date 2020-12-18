@@ -7,8 +7,27 @@
     android:orientation="vertical"
     tools:context=".VideoDetails">
 
-    <VideoView
-        android:id="@+id/videoView"
+    <ImageView
+        android:id="@+id/image1"
         android:layout_width="match_parent"
-        android:layout_height="270dp" />
+        android:layout_height="220dp"/>
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
+
 </LinearLayout>
