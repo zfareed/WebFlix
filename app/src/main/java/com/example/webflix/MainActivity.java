@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -36,10 +39,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     View view;
     Context context;
-    ViewFlipper flipper;
+    ImageSlider imageSlider;
     ArrayList<VideoData> videoData;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseRef1;
+    DatabaseReference databaseRef2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +54,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer = findViewById(R.id.drawer_layout) ;
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer , toolbar , R.string.navigation_drawer_open , R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle) ;
-        toggle.syncState() ;
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open , R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id. nav_view );
         navigationView.setNavigationItemSelectedListener(this);
@@ -61,24 +65,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
+
+
         /////////////////////////// content_main code ///////////////////////////////////
-        flipper = findViewById(R.id.flipper);
+        imageSlider = findViewById(R.id.image_slider);
+        final ArrayList<SlideModel> imageList = new ArrayList<SlideModel>();
 
-        int slideshowArray[] = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
+         firebaseDatabase = FirebaseDatabase.getInstance();
+         databaseRef2 = firebaseDatabase.getReference("Slider");
+         databaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 for (DataSnapshot ds: snapshot.getChildren())
+                 {
 
-        for (int i = 0; i < slideshowArray.length; i++)
-            slideShow(slideshowArray[i]);
+                     imageList.add(new SlideModel(ds.child("url").getValue().toString(),ds.child("title").getValue().toString(),ScaleTypes.FIT));
+                 }
+
+                 imageSlider.setImageList(imageList);
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+
+             }
+         });
 
         videoData = new ArrayList<>();
 
-        /*VideoData();*/
-
-
         ////////////////////////////////////////////////////////////////////////////////
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Data");
+        databaseRef1 = firebaseDatabase.getReference("RecyclerView-Data");
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseRef1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren())
@@ -102,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void slideShow(int img) {
+    /*public void slideShow(int img) {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(img);
 
@@ -111,10 +129,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         flipper.setAutoStart(true);
 
         flipper.setInAnimation(this, android.R.anim.slide_in_left);
-        flipper.setInAnimation(this, android.R.anim.slide_out_right);
 
 
-    }
+    }*/
 
 
 

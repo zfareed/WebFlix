@@ -37,8 +37,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         VideoData videodata = data.get(position);
-        holder.Title.setText(videodata.Video_title);
-        Picasso.get().load(videodata.Video_image).fit().into(holder.VideoImage);
+        holder.Title.setText(videodata.video_title);
+        Picasso.get().load(videodata.video_image).fit().into(holder.VideoImage);
     }
 
     @Override

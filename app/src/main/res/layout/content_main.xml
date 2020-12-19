@@ -5,20 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#0B0A0A"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
-    <ViewFlipper
-        android:id="@+id/flipper"
+    <com.denzcoskun.imageslider.ImageSlider
+        app:iss_placeholder="@drawable/slider_back"
+        android:id="@+id/image_slider"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@color/light_gray" />
+        app:iss_auto_cycle="true"
+        app:iss_period="2000"
+        app:iss_delay="1000"
+        app:iss_text_align="CENTER" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rclrview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"/>
 
 
 </LinearLayout>

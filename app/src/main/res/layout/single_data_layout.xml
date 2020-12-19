@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:orientation="vertical"
-    android:layout_marginTop="20dp">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,15 +25,17 @@
                 android:id="@+id/cardImage"
                 android:layout_width="160dp"
                 android:layout_height="210dp"
-                android:background="@color/light_gray"
+                android:background="@drawable/webflix_back"
                 />
 
             <TextView
                 android:id="@+id/video_title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
                 android:text="TextView" />
 
 
