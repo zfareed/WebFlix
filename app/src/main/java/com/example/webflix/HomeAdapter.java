@@ -2,25 +2,28 @@ package com.example.webflix;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
-    Context context;
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> implements View.OnClickListener {
+    Context mcontext;
     ArrayList<VideoData> data;
 
     public HomeAdapter(Context context, ArrayList<VideoData> data) {
-        this.context = context;
+        this.mcontext = context;
         this.data = data;
     }
 
@@ -39,6 +42,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         VideoData videodata = data.get(position);
         holder.Title.setText(videodata.video_title);
         Picasso.get().load(videodata.video_image).fit().into(holder.VideoImage);
+
+        holder.itemView.setOnClickListener(this);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(v.getContext(),VideoDetails.class);
+               intent.putExtra("Position",position);
+               v.getContext().startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
@@ -47,6 +62,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         return data.size();
     }
 
+    @Override
+    public void onClick(View v) {
+       //////////////////////////////////
+
+    }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,7 +78,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             VideoImage = itemView.findViewById(R.id.cardImage);
             Title = itemView.findViewById(R.id.video_title_text);
-            int pos = getAdapterPosition();
+
 
         }
     }

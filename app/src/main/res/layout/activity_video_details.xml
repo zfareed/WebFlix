@@ -7,27 +7,47 @@
     android:orientation="vertical"
     tools:context=".VideoDetails">
 
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"/>
 
-    <TextView
-        android:id="@+id/txt1"
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        >
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+          android:layout_gravity="center"/>
+    </com.google.android.exoplayer2.ui.PlayerView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"/>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_share" />
 
-    <TextView
-        android:id="@+id/txt2"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_rate" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/episode_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

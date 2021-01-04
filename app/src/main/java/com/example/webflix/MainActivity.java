@@ -2,10 +2,12 @@ package com.example.webflix;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -52,13 +54,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer = findViewById(R.id.drawer_layout) ;
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open , R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id. nav_view );
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         RecyclerView recyclerView = findViewById(R.id.rclrview);
@@ -94,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         videoData = new ArrayList<>();
 
         ////////////////////////////////////////////////////////////////////////////////
-        databaseRef1 = firebaseDatabase.getReference("RecyclerView-Data");
+        databaseRef1 = firebaseDatabase.getReference("Data");
 
         databaseRef1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -104,34 +108,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     VideoData data = ds.getValue(VideoData.class);
                     videoData.add(data);
                 }
+
                 HomeAdapter homeAdapter = new HomeAdapter(context,videoData);
                 recyclerView.setAdapter(homeAdapter);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show();
 
             }
         });
         ////////////////////////////////////////////////////////////////////////////////
-
-
-
-
     }
-
-    /*public void slideShow(int img) {
-        ImageView imageView = new ImageView(this);
-        imageView.setBackgroundResource(img);
-
-        flipper.addView(imageView);
-        flipper.setFlipInterval(3000);
-        flipper.setAutoStart(true);
-
-        flipper.setInAnimation(this, android.R.anim.slide_in_left);
-
-
-    }*/
 
 
 
