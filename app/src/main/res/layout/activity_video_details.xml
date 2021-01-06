@@ -13,12 +13,9 @@
         android:id="@+id/player_view"
         android:layout_width="match_parent"
         android:layout_height="204dp"
-        app:scrubber_color="@color/yello"
-        app:unplayed_color="@color/white"
-        app:played_color="@color/dark_yellow"
-        app:buffered_color="@color/buffered_color"
-        app:rewind_increment="7000"
-        app:fastforward_increment="10000">
+        app:rewind_increment="10000"
+        app:fastforward_increment="10000"
+        app:controller_layout_id="@layout/custom_controller">
 
         <ProgressBar
             android:id="@+id/loading_bar"
