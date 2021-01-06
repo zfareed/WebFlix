@@ -13,7 +13,12 @@
         android:id="@+id/player_view"
         android:layout_width="match_parent"
         android:layout_height="204dp"
-        >
+        app:scrubber_color="@color/yello"
+        app:unplayed_color="@color/white"
+        app:played_color="@color/dark_yellow"
+        app:buffered_color="@color/buffered_color"
+        app:rewind_increment="7000"
+        app:fastforward_increment="10000">
 
         <ProgressBar
             android:id="@+id/loading_bar"
@@ -22,27 +27,39 @@
             android:layout_height="wrap_content"
             
           android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/playbutton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_play"
+            android:layout_gravity="center"
+            />
+
+
+
     </com.google.android.exoplayer2.ui.PlayerView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/sharBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_share" />
+            android:src="@drawable/share_icon" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/favBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_rate" />
+            android:src="@drawable/favourite_icon" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -35,14 +35,10 @@ public class VideoDetailsAdapter extends RecyclerView.Adapter<VideoDetailsAdapte
     @Override
     public void onBindViewHolder(@NonNull VideoDetailsAdapter.ViewHolder holder, int position) {
         String mylink = myepisodes.getVideo_links().get(position);
-
-       // for (int i =0 ;i<myepisodes.getVideo_links().size();i++){
             Picasso.get().load(myepisodes.getThumb_nail()).fit().into(holder.episode_thumbnail);
            holder.episode_title.setText(mylink);
-      //  }
 
-        //Picasso.get().load(episodes.getThumb_nail()).fit().into(holder.episode_thumbnail);
-       //holder.episode_title.setText(episodes.getVideo_links().get(0));
+
 
 
     }
