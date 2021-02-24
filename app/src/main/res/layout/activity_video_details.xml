@@ -15,7 +15,8 @@
         android:layout_height="204dp"
         app:rewind_increment="10000"
         app:fastforward_increment="10000"
-        app:controller_layout_id="@layout/custom_controller">
+        app:controller_layout_id="@layout/custom_controller"
+        >
 
         <ProgressBar
             android:id="@+id/loading_bar"
@@ -25,12 +26,20 @@
             
           android:layout_gravity="center"/>
 
+
+
+        <ImageView
+            android:id="@+id/player_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <ImageView
             android:id="@+id/playbutton"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/ic_play"
             android:layout_gravity="center"
+            android:outlineAmbientShadowColor="@color/black"
             />
 
 
