@@ -9,6 +9,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
+
+
     <com.denzcoskun.imageslider.ImageSlider
         app:iss_placeholder="@drawable/slider_back"
         android:id="@+id/image_slider"
@@ -25,6 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginTop="20dp"/>
+
+
+
+
+
 
 
 </LinearLayout>

@@ -83,8 +83,6 @@ public class VideoDetails extends AppCompatActivity implements VideoDetailsAdapt
         playerView = findViewById(R.id.player_view);
         loadingBar = findViewById(R.id.loading_bar);
         episodeRecycler = findViewById(R.id.episode_recyclerview);
-        favBtn = findViewById(R.id.favBtn);
-        sharBtn = findViewById(R.id.sharBtn);
         playbutton = findViewById(R.id.playbutton);
         playerThumbnail = findViewById(R.id.player_thumbnail);
 
@@ -205,7 +203,7 @@ public class VideoDetails extends AppCompatActivity implements VideoDetailsAdapt
         {
             player = ExoPlayerFactory.newSimpleInstance(this);
             playerView.setPlayer(player);
-            Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
+
         }
 
     }

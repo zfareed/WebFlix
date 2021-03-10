@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".VideoDetails">
 
 
@@ -35,18 +36,18 @@
 
         <ImageView
             android:id="@+id/playbutton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_play"
+            android:layout_width="99dp"
+            android:layout_height="93dp"
             android:layout_gravity="center"
             android:outlineAmbientShadowColor="@color/black"
-            />
+            android:src="@drawable/myplay" />
 
 
 
     </com.google.android.exoplayer2.ui.PlayerView>
 
-    <LinearLayout
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -66,11 +67,12 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:src="@drawable/favourite_icon" />
-    </LinearLayout>
+    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/episode_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.webflix;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -65,7 +67,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                UserMenuSelector(item);
+                return false;
+            }
+        });
+        //navigationView.setNavigationItemSelectedListener(this);
+
 
         RecyclerView recyclerView = findViewById(R.id.rclrview);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false);
@@ -125,7 +135,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ////////////////////////////////////////////////////////////////////////////////
     }
 
+    private void UserMenuSelector(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                Intent myintent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(myintent);
 
+
+                break;
+
+            case R.id.nav_contact:
+                Intent nintent = new Intent(MainActivity.this, ContactUs.class);
+                startActivity(nintent);
+                break;
+
+            case R.id.nav_share:
+                String mytext = "Please download Webflix App, https://play.google.com/store/apps/details?id=com.example.webflix";
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(intent.EXTRA_TEXT, mytext);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_rate_app:
+                break;
+
+            case R.id.nav_privacy:
+                String URL = "https://myprivacypolicy1122.blogspot.com/2021/02/webflix.html";
+                Intent mintent = new Intent( Intent.ACTION_VIEW, Uri.parse(URL));
+                Intent chooser = Intent.createChooser(mintent,"Choose from Appication");
+
+                if (mintent.resolveActivity(getPackageManager())!=null){
+                    startActivity(chooser);
+                }
+                break;
+
+        }
+    }
 
 
     @Override
